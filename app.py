@@ -5,6 +5,7 @@ import numpy as np
 import os
 
 app = Flask(__name__)
+const port = process.env.PORT || 5000
 
 # --- DOSYA YOLLARI ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -208,4 +209,4 @@ def predict():
     except Exception as e: return jsonify({'error': f"Sistem Hatası: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host=0.0.0.0, debug=True)
