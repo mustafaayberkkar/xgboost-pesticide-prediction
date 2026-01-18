@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pestisit Risk Analizi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="header">
+                <h2>🧪 Akıllı Pestisit Analiz Sistemi</h2>
+                <p>Tam Otomatik Risk Tahmin Modülü</p>
+            </div>
+
+            <form id="aiForm">
+                <div class="grid-layout">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Pestisit Türü</label>
+                            <select id="Pestisit" class="searchable-select" required>
+                                <option value="" disabled selected>Seçiniz...</option>
+                                {% for p in pestisitler %}
+                                <option value="{{ p }}">{{ p }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ürün (Bitki)</label>
+                            <select id="Urun" class="searchable-select" required disabled>
+                                <option value="" disabled selected>Önce Pestisit Seçiniz...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Sıcaklık (°C)</label>
+                            <input type="number" step="any" id="Sicaklik_C" placeholder="Örn: 20.9" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Uygulanan İlaç Miktarı (ml)</label>
+                            <input type="number" step="any" id="Uygulanan_Ilac_Miktari_ml" placeholder="Örn: 22.37" required>
+                        </div>
+                        
+                        <!--<div class="info-box-static">
+                            <p>ℹ️ MRL, Tutunma, Buhar Basıncı ve Konsantrasyon sistem tarafından otomatik hesaplanır.</p>
+                        </div>-->
+                    </div>
+                </div>
+
+                <button type="submit" id="btnSubmit">🛡️ Analizi Başlat</button>
+            </form>
+
+            <div id="resultBox" class="result-box" style="display: none;">
+                <h3 id="resTitle">Sonuç</h3>
+                <p id="resText"></p>
+                
+                <div class="details-grid">
+                    <div class="detail-item"><strong>MRL Limiti:</strong> <span id="mrlInfo">-</span></div>
+                    <div class="detail-item"><strong>Buhar Basıncı:</strong> <span id="vpInfo">-</span></div>
+                    <div class="detail-item"><strong>Tahmini Kalıntı:</strong> <span id="kalintiInfo">-</span> ppm</div>
+                    <div class="detail-item"><strong>Tutunma Katsayısı:</strong> <span id="tutunmaInfo">-</span></div>
+                    <div class="detail-item"><strong>Uçuculuk İndeksi:</strong> <span id="indexInfo">-</span></div>
+                </div>
+
+                <div class="progress-bg">
+                    <div id="probBar" class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const productMap = {{ product_map | tojson }};
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,1 +1,0 @@
-# xgboost-pesticide-prediction

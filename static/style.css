@@ -1,0 +1,128 @@
+body {
+    background: #f0f2f5;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.container {
+    background: #fff;
+    width: 100%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.header { text-align: center; margin-bottom: 30px; }
+.header h2 { color: #2c3e50; margin: 0; }
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+@media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; }
+}
+.form-group { margin-bottom: 15px; }
+label { display: block; font-weight: 600; margin-bottom: 5px; color: #34495e; font-size: 0.9rem; }
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    padding: 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+button:hover { background: #2980b9; }
+
+/* Sonuç Alanı */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+#resTitle {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+#resText {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+.progress-bg {
+    background: #dcdde1;
+    border-radius: 20px;
+    height: 30px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.progress-fill {
+    height: 100%;
+    background: #27ae60;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    width: 0%;
+    transition: width 0.8s ease;
+}
+
+/* Bilgi Kutuları */
+.info-box-static {
+    background-color: #eaf2f8;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #2c3e50;
+    margin-top: 15px;
+    border-left: 4px solid #3498db;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 15px 0;
+    text-align: left;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.detail-item strong {
+    color: #34495e;
+}
+
+.detail-item span {
+    color: #2980b9;
+    font-weight: bold;
+    float: right;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Select2 Düzeltmeleri */
+.select2-container .select2-selection--single {
+    height: 40px !important;
+    padding: 5px;
+}
